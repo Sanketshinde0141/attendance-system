@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Login Screen -->
+  <div class="container" id="login-screen">
+    <h1>Login</h1>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <p id="login-error" class="error-text"></p>
+  </div>
+
+  <!-- Admin Screen -->
+  <div class="container hidden" id="admin-screen">
+    <h1>Admin Dashboard</h1>
+
+  <div class="input-section">
+    <input type="text" id="newStudentInput" placeholder="Student username" />
+    <input type="password" id="newStudentPassword" placeholder="Student password" />
+    <button onclick="addStudent()">Add Student</button>
+  </div>
+
+    <div class="date-picker">
+      <label>Date:</label>
+      <input type="date" id="attendanceDate">
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Present</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="attendanceTableBody"></tbody>
+    </table>
+
+    <button onclick="saveAttendance()">Save Attendance</button>
+    <button onclick="exportCSV()">Export CSV</button>
+    <button onclick="exportExcel()">Export Excel</button>
+
+    <h3>Past Records</h3>
+    <select id="dateSelect" onchange="loadPastAttendance()">
+      <option value="">-- Select Date --</option>
+    </select>
+    <ul id="adminAttendanceList"></ul>
+  </div>
+
+  <!-- Student Screen -->
+  <div class="container hidden" id="student-screen">
+    <h1>Welcome, <span id="studentName"></span></h1>
+    <h3>Your Attendance</h3>
+    <ul id="studentAttendanceList"></ul>
+  </div>
+
+  <script src="xlsx.full.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
